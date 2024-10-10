@@ -33,7 +33,7 @@
       "id": 4,
       "nombre": "Fenilbutazona",
       "presentaciones": [
-        { "nombre": "100ml", "precio": 90 },
+        { "nombre": "100ml", "precio": 70 },
         { "nombre": "250ml", "precio": 150 }
       ],
       "propiedades": "Analgésico y antiinflamatorio",
