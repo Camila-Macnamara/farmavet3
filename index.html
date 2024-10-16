@@ -34,12 +34,12 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#productos-container">Productos
+                            <a class="nav-link active" aria-current="page" href="#productos">Productos
                                 Disponibles</a>
                         </li>
                     </ul>
                     <!-- Icono de carrito -->
-                    <a class="nav-link" href="#carrito-de-compras">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#carritoModal">
                         <i class="fas fa-shopping-cart" style="color: #B197FC;"></i>
                     </a>
                 </div>
@@ -55,7 +55,7 @@
     </section>
 
     <!-- Productos -->
-    <section class="productos mt-5" id="#productos-container">
+    <section class="productos mt-5" id="productos">
         <div class="container fredoka">
             <h1 class="text-center">Catálogo de productos</h1>
             <div class="row" id="productos-container">
@@ -64,44 +64,55 @@
         </div>
     </section>
 
-    <!-- Carrito de pedido -->
-    <section id="carrito-de-compras" class="carrito mt-5 container-carrito fredoka">
-        <h2>Mi Pedido</h2>
-        <ul class="listaCarrito list-group">
-            <!-- Los productos del carrito se mostrarán aquí -->
-        </ul>
-        <div class="totalCarrito mt-3">Total: $0</div>
-        <button id="finalizar-pedido" class="btn-finalizar fredoka">Finalizar Pedido</button>
-        <button id="vaciar-carrito" class="btn-vaciar fredoka">Vaciar Carrito</button>
+    <!-- Modal del carrito -->
+    <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="carritoModalLabel">Mi Carrito</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="listaCarrito list-group">
+                        <!-- Los productos del carrito se mostrarán aquí -->
+                    </ul>
+                    <div class="totalCarrito mt-3">Total: $0</div>
+                    <button id="vaciar-carrito" class="btn-vaciar fredoka">Vaciar Carrito</button>
+                    <button id="finalizar-pedido-modal" class="btn-finalizar fredoka">Finalizar Pedido</button>
+                    <!-- Mensaje de error en caso de que el carrito esté vacío -->
+                    <div id="mensaje-error" class="mensaje-error" style="display: none; color: red;"></div>
 
-        <div id="formulario-container" class="formulario-container fredoka" style="display: none;">
-            <h3>Detalles de Envío</h3>
-            <form id="formulario-pedido">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" required>
-
-                <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" required>
-
-                <label for="direccion">Dirección:</label>
-                <input type="text" id="direccion" required>
-
-                <button type="submit">Enviar</button>
-            </form>
+                    <!-- Formulario dentro del modal -->
+                    <div id="formulario-container" class="formulario-container fredoka"
+                        style="display: none; margin-top: 20px;">
+                        <h3>Detalles de Envío</h3>
+                        <form id="formulario-pedido">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" required>
+                            <label for="telefono">Teléfono:</label>
+                            <input type="tel" id="telefono" required>
+                            <label for="direccion">Dirección:</label>
+                            <input type="text" id="direccion" required>
+                            <button type="submit">Enviar</button>
+                        </form>
+                        <!-- Mensaje de agradecimiento -->
+                        <div id="mensaje" class="mensaje" style="display: none; margin-top: 20px;"></div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <div id="mensaje" class="mensaje" style="display: none;"></div>
-    </section>
 
     <footer class="custom-footer text-center text-lg-start mt-5 fredoka">
         <div class="text-center p-3">
             <p class="mb-0">Developed by CMV</p>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="path/to/your/js/script.js"></script>
 </body>
 
 </html>

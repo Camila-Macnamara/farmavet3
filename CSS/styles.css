@@ -1,4 +1,3 @@
-
 header {
     color: white;
     padding: 20px;
@@ -11,8 +10,8 @@ body {
     background-color: #f9f9f9;
     margin: 0;
     padding: 20px;
-    background: url('../img/fondo.jpg') no-repeat center center fixed; 
-    background-size: cover; 
+    background: url('../img/fondo.jpg') no-repeat center center fixed;
+    background-size: cover;
     position: relative;
 }
 
@@ -23,25 +22,25 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.7); 
-    z-index: -1; 
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: -1;
 }
 
-h1  .text-center {
+h1 .text-center {
     margin: 0px;
 }
 
 .fredoka {
-  font-family: "Fredoka", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300px;
-  font-style: normal;
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300px;
+    font-style: normal;
 }
 
 
 .text-center img {
-    max-width: 200px; 
-    height: auto; 
+    max-width: 200px;
+    height: auto;
 }
 
 /* Estilos para los productos */
@@ -51,18 +50,18 @@ h1  .text-center {
 
 /* Efecto de hover en las tarjetas de productos */
 .card:hover {
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
 
 /* Colores para los botones de agregar productos */
 .btn.btn-primary {
-    background-color: #B197FC !important; 
-    color: white !important; 
-    border: none; 
-    border-radius: 20px; 
-    padding: 10px; 
-    cursor: pointer; 
-    transition: background-color 0.3s ease; 
+    background-color: #B197FC !important;
+    color: white !important;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .btn.btn-primary:hover {
@@ -72,14 +71,14 @@ h1  .text-center {
 /* Estilos para el carrito */
 .carrito {
     display: block;
-    max-width: 500px; 
-    width: 100%; 
-    margin: 40px auto; 
+    max-width: 500px;
+    width: 100%;
+    margin: 40px auto;
     padding: 20px;
-    border-radius: 8px; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
-    background: linear-gradient(145deg, #f9f9f9, #e4e4e4); 
-    overflow: hidden; 
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(145deg, #f9f9f9, #e4e4e4);
+    overflow: hidden;
 }
 
 /* Estilos para la lista del carrito */
@@ -93,29 +92,29 @@ h1  .text-center {
 .listaCarrito li {
     padding: 15px;
     border-bottom: 1px solid #ddd;
-    display: flex; 
-    justify-content: space-between; 
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    transition: background-color 0.3s; 
+    transition: background-color 0.3s;
 }
 
 .listaCarrito li:hover {
-    background-color: rgba(177, 151, 252, 0.1); 
+    background-color: rgba(177, 151, 252, 0.1);
 }
 
 /* Estilo del total del carrito */
 .totalCarrito {
     font-weight: bold;
     margin-top: 10px;
-    font-size: 1.5rem; 
-    color: #B197FC; 
+    font-size: 1.5rem;
+    color: #B197FC;
 }
 
 /* Alineación del total */
 .totalCarrito::before {
-    content: "Total: "; 
-    font-weight: normal; 
-    color: #333; 
+    content: "Total: ";
+    font-weight: normal;
+    color: #333;
 }
 
 .container-carrito {
@@ -124,8 +123,8 @@ h1  .text-center {
 
 /* Botones del carrito */
 button {
-    background-color: #B197FC; 
-    color: white; 
+    background-color: #B197FC;
+    color: white;
     border: none;
     border-radius: 20px;
     padding: 10px;
@@ -134,16 +133,16 @@ button {
 }
 
 button:hover {
-    background-color: #2a4577; 
+    background-color: #2a4577;
 }
 
 
 .custom-footer {
-    background-color: #563d7c; 
-    color: #ffffff; 
-    padding: 20px; 
+    background-color: #563d7c;
+    color: #ffffff;
+    padding: 20px;
     text-align: center;
-    font-size: 1rem; 
+    font-size: 1rem;
 }
 
 
@@ -176,7 +175,7 @@ button:hover {
 }
 
 .nav-item :hover {
-    background-color: #ba94f3 ;
+    background-color: #ba94f3;
     transform: scale(1.05);
 }
 
@@ -186,12 +185,12 @@ button:hover {
 
 /* Ícono del carrito de compras */
 .nav-link .fa-shopping-cart {
-    font-size: 1.7rem; 
-    color: #B197FC; 
+    font-size: 1.7rem;
+    color: #B197FC;
 }
 
 .nav-link .fa-shopping-cart:hover {
-    color: #563d7c; 
+    color: #563d7c;
 }
 
 /* Responsivo: Centrando los ítems en pantallas pequeñas */
@@ -223,6 +222,27 @@ button:hover {
     display: none;
     margin-top: 20px;
     font-size: 1.2rem;
-    color: #8928a7; 
+    color: #8928a7;
 }
 
+/* Modal del carrito */
+.modal-dialog {
+    max-width: 400px;
+    margin: 1.75rem auto;
+}
+
+@media (max-width: 600px) {
+    .modal-dialog {
+        width: 90%;
+        margin: 10px;
+    }
+}
+
+.modal-body {
+    padding: 15px;
+}
+
+.mensaje-error {
+    display: none;
+    color: red;
+}
