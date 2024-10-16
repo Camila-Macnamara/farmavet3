@@ -1,4 +1,4 @@
-let medicamentos = [
+const medicamentos = [
   {
     "id": 1,
     "nombre": "Naxpet",
