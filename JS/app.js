@@ -251,23 +251,27 @@ botonFinalizar.addEventListener("click", () => {
 });
 
 formularioPedido.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const nombre = "Camila MacNamara";
-    const telefono = "123456789";
-    const direccion = "Calle CoderHouse 2024";
-    
-    document.getElementById("nombre").value = nombre;
-    document.getElementById("telefono").value = telefono;
-    document.getElementById("direccion").value = direccion;
-   
-    mensaje.textContent = `Gracias por comprar en Farma Vet, ${nombre}. Estaremos enviando tus productos a ${direccion} en los próximos días.`;
-    mensaje.style.display = 'block';
-    carrito = [];
-    localStorage.removeItem("carrito");
-    actualizarCarritoEnDOM();
-    formularioPedido.reset();
-    formularioContainer.style.display = 'none';
+  event.preventDefault();
+  
+  // Obtener los datos ingresados en el formulario
+  const nombre = document.getElementById("nombre").value;
+  const telefono = document.getElementById("telefono").value;
+  const direccion = document.getElementById("direccion").value;
+
+  // Mostrar mensaje de confirmación
+  mensaje.textContent = `Gracias por comprar en Farma Vet, ${nombre}. Estaremos enviando tus productos a ${direccion} en los próximos días.`;
+  mensaje.style.display = 'block';
+  
+  // Limpiar el carrito de pedido
+  carrito = [];
+  localStorage.removeItem("carrito");
+  actualizarCarritoEnDOM();
+
+  // Limpiar el formulario y ocultarlo
+  formularioPedido.reset();
+  formularioContainer.style.display = 'none';
 });
+
 
 // Evento para vaciar el carrito
 const botonVaciar = document.getElementById("vaciar-carrito");
