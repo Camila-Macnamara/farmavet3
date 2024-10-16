@@ -191,32 +191,32 @@ function actualizarCarritoEnDOM() {
 function mostrarProductos() {
   const productosContainer = document.getElementById("productos-container");
   productosContainer.innerHTML = "";
-
   medicamentos.forEach((medicamento) => {
     const col = document.createElement("div");
     col.className = "col-md-4 mb-4";
 
-    col.innerHTML = `
-      <div class="card">
-          <img src="${medicamento.imagen}" class="card-img-top" alt="${medicamento.nombre}">
-          <div class="card-body">
-              <h5 class="card-title">${medicamento.nombre}</h5>
-              <p class="card-text">Propiedades: ${medicamento.propiedades}</p>
-              <p>Precio: <span class="precio" id="precio-${medicamento.id}">$${medicamento.presentaciones[0].precio}</span></p>
-              <select class="form-select mb-3" id="select-${medicamento.id}">
-                  ${medicamento.presentaciones.map(
-                    (presentacion) => `
-                      <option value="${presentacion.nombre}" data-precio="${presentacion.precio}">
-                          ${presentacion.nombre}
-                      </option>
-                    `
-                  ).join("")}
-              </select>
-              <button class="btn btn-primary" id="boton-agregar-${medicamento.id}">Agregar al Carrito</button>
-          </div>
-      </div>
-    `;
+    // Opciones del select usando map
+    const opciones = medicamento.presentaciones.map(presentacion =>
+      `<option value="${presentacion.nombre}" data-precio="${presentacion.precio}">${presentacion.nombre}</option>`
+    ).join("");
 
+    // HTML sin incluir js
+    col.innerHTML = `
+          <div class="card">
+              <img src="${medicamento.imagen}" class="card-img-top" alt="${medicamento.nombre}">
+              <div class="card-body">
+                  <h5 class="card-title">${medicamento.nombre}</h5>
+                  <p class="card-text">Propiedades: ${medicamento.propiedades}</p>
+                  <p>Precio: <span class="precio" id="precio-${medicamento.id}">$${medicamento.presentaciones[0].precio}</span></p>
+                  <select class="form-select mb-3" id="select-${medicamento.id}">
+                      ${opciones}
+                  </select>
+                  <button class="btn btn-primary" id="boton-agregar-${medicamento.id}">Agregar al Carrito</button>
+              </div>
+          </div>
+      `;
+
+    // Agregar eventos después de asignar el HTML
     const selectPresentacion = col.querySelector(`#select-${medicamento.id}`);
     selectPresentacion.onchange = (event) => {
       const selectedOption = event.target.options[event.target.selectedIndex];
