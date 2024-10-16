@@ -91,22 +91,10 @@ const medicamentos = [
   }
 ];
 
-// Mostrar productos después de definir el array
-mostrarProductos();
-actualizarCarritoEnDOM();
-
-// Lógica del carrito
-
-const botonFinalizar = document.getElementById("finalizar-pedido");
-const formularioContainer = document.getElementById("formulario-container");
-const formularioPedido = document.getElementById("formulario-pedido");
-const mensaje = document.getElementById("mensaje");
-
-
 // Carrito de compras
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-// Función para agregar productos al carrito
+// Funciones de lógica del carrito
 function agregarAlCarrito(idMedicamento, presentacion) {
   const medicamento = medicamentos.find((m) => m.id === idMedicamento);
   const itemCarrito = carrito.find(
@@ -125,7 +113,6 @@ function agregarAlCarrito(idMedicamento, presentacion) {
   actualizarCarritoEnDOM();
 }
 
-// Función para eliminar o reducir la cantidad de un producto en el carrito
 function modificarCantidadEnCarrito(idMedicamento, presentacion, accion) {
   const itemCarrito = carrito.find(
     (item) =>
@@ -148,12 +135,10 @@ function modificarCantidadEnCarrito(idMedicamento, presentacion, accion) {
   actualizarCarritoEnDOM();
 }
 
-// Función para guardar el carrito en Local Storage
 function guardarCarritoEnLocalStorage() {
   localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-// Función para calcular el total del carrito
 function calcularTotal() {
   return carrito.reduce((total, item) => {
     const precioPresentacion = item.medicamento.presentaciones.find(
@@ -163,7 +148,6 @@ function calcularTotal() {
   }, 0);
 }
 
-// Función para actualizar el carrito en el DOM
 function actualizarCarritoEnDOM() {
   const listaCarrito = document.getElementsByClassName("listaCarrito")[0];
   listaCarrito.innerHTML = "";
@@ -175,7 +159,6 @@ function actualizarCarritoEnDOM() {
     ).precio;
     li.textContent = `${item.medicamento.nombre} (${item.presentacion}) - ${item.cantidad} unidades - Precio: $${precioPresentacion}`;
 
-    // Botón para aumentar la cantidad
     const botonAumentar = document.createElement("button");
     botonAumentar.textContent = "+";
     botonAumentar.onclick = () =>
@@ -185,7 +168,6 @@ function actualizarCarritoEnDOM() {
         "incrementar"
       );
 
-    // Botón para reducir la cantidad
     const botonReducir = document.createElement("button");
     botonReducir.textContent = "-";
     botonReducir.onclick = () =>
@@ -200,45 +182,12 @@ function actualizarCarritoEnDOM() {
     listaCarrito.appendChild(li);
   });
 
-  // Calcular el total y mostrarlo
   const total = calcularTotal();
   const totalElement = document.getElementsByClassName("totalCarrito")[0];
   totalElement.textContent = `Total: $${total}`;
 }
 
-// Muestra el formulario al hacer clic en finalizar
-botonFinalizar.addEventListener("click", () => {
-  formularioContainer.style.display = "block";
-});
-
-window.addEventListener('load', () => {
-  formularioPedido.addEventListener('submit', (event) => {
-    event.preventDefault();
-    // Obtiene los datos del formulario y los llena automáticamente
-    const nombre = "Camila MacNamara";
-    const telefono = "123456789";
-    const direccion = "Calle CoderHouse 2024";
-    document.getElementById("nombre").value = nombre;
-    document.getElementById("telefono").value = telefono;
-    document.getElementById("direccion").value = direccion;
-
-    // Mostrar mensaje de confirmación
-    mensaje.textContent = `Gracias por comprar en Farma Vet, ${nombre}. Estaremos enviando tus productos a ${direccion} en los próximos días.`;
-    mensaje.style.display = 'block';
-
-    // Limpiar el carrito de pedido
-    carrito = [];
-    localStorage.removeItem("carrito");
-    actualizarCarritoEnDOM();
-
-    // Limpia el formulario y lo oculta
-    formularioPedido.reset();
-    formularioContainer.style.display = 'none';
-  });
-});
-
-
-// Generar los botones de productos dinámicamente
+// Mostrar productos y agregar eventos
 function mostrarProductos() {
   const productosContainer = document.getElementById("productos-container");
   productosContainer.innerHTML = "";
@@ -247,45 +196,32 @@ function mostrarProductos() {
     const col = document.createElement("div");
     col.className = "col-md-4 mb-4";
 
-    // Crear la tarjeta de producto
     col.innerHTML = `
-            <div class="card">
-                <img src="${medicamento.imagen}" class="card-img-top" alt="${medicamento.nombre
-      }">
-                <div class="card-body">
-                    <h5 class="card-title">${medicamento.nombre}</h5>
-                    <p class="card-text">Propiedades: ${medicamento.propiedades
-      }</p>
-                    <p>Precio: <span class="precio" id="precio-${medicamento.id
-      }">$${medicamento.presentaciones[0].precio}</span></p>
-                    
-                    <!-- Select para presentaciones -->
-                    <select class="form-select mb-3" id="select-${medicamento.id
-      }">
-                        ${medicamento.presentaciones
-        .map(
-          (presentacion) => `
-                            <option value="${presentacion.nombre}" data-precio="${presentacion.precio}">
-                                ${presentacion.nombre}
-                            </option>
-                        `
-        )
-        .join("")}
-                    </select>
-                    
-                    <button class="btn btn-primary" id="boton-agregar-${medicamento.id
-      }">Agregar al Carrito</button>
-                </div>
-            </div>
-        `;
+      <div class="card">
+          <img src="${medicamento.imagen}" class="card-img-top" alt="${medicamento.nombre}">
+          <div class="card-body">
+              <h5 class="card-title">${medicamento.nombre}</h5>
+              <p class="card-text">Propiedades: ${medicamento.propiedades}</p>
+              <p>Precio: <span class="precio" id="precio-${medicamento.id}">$${medicamento.presentaciones[0].precio}</span></p>
+              <select class="form-select mb-3" id="select-${medicamento.id}">
+                  ${medicamento.presentaciones.map(
+                    (presentacion) => `
+                      <option value="${presentacion.nombre}" data-precio="${presentacion.precio}">
+                          ${presentacion.nombre}
+                      </option>
+                    `
+                  ).join("")}
+              </select>
+              <button class="btn btn-primary" id="boton-agregar-${medicamento.id}">Agregar al Carrito</button>
+          </div>
+      </div>
+    `;
 
     const selectPresentacion = col.querySelector(`#select-${medicamento.id}`);
     selectPresentacion.onchange = (event) => {
       const selectedOption = event.target.options[event.target.selectedIndex];
       const nuevoPrecio = selectedOption.dataset.precio;
-      document.getElementById(
-        `precio-${medicamento.id}`
-      ).textContent = `$${nuevoPrecio}`;
+      document.getElementById(`precio-${medicamento.id}`).textContent = `$${nuevoPrecio}`;
     };
 
     const botonAgregar = col.querySelector(`#boton-agregar-${medicamento.id}`);
@@ -298,5 +234,36 @@ function mostrarProductos() {
   });
 }
 
+// Eventos de finalización de pedido
+const botonFinalizar = document.getElementById("finalizar-pedido");
+const formularioContainer = document.getElementById("formulario-container");
+const formularioPedido = document.getElementById("formulario-pedido");
+const mensaje = document.getElementById("mensaje");
+
+botonFinalizar.addEventListener("click", () => {
+  formularioContainer.style.display = "block";
+});
+
+formularioPedido.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const nombre = "Camila MacNamara";
+  const telefono = "123456789";
+  const direccion = "Calle CoderHouse 2024";
+  document.getElementById("nombre").value = nombre;
+  document.getElementById("telefono").value = telefono;
+  document.getElementById("direccion").value = direccion;
+
+  mensaje.textContent = `Gracias por comprar en Farma Vet, ${nombre}. Estaremos enviando tus productos a ${direccion} en los próximos días.`;
+  mensaje.style.display = 'block';
+
+  carrito = [];
+  localStorage.removeItem("carrito");
+  actualizarCarritoEnDOM();
+
+  formularioPedido.reset();
+  formularioContainer.style.display = 'none';
+});
+
+// Inicializar la aplicación
 mostrarProductos();
 actualizarCarritoEnDOM();
