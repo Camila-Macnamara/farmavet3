@@ -92,7 +92,7 @@ let medicamentos = [
 ];
 
 // Mostrar productos después de definir el array
-mostrarProductos(); 
+mostrarProductos();
 actualizarCarritoEnDOM();
 
 // Lógica del carrito
@@ -121,8 +121,8 @@ function agregarAlCarrito(idMedicamento, presentacion) {
     carrito.push({ medicamento, presentacion, cantidad: 1 });
   }
 
-  guardarCarritoEnLocalStorage(); 
-  actualizarCarritoEnDOM(); 
+  guardarCarritoEnLocalStorage();
+  actualizarCarritoEnDOM();
 }
 
 // Función para eliminar o reducir la cantidad de un producto en el carrito
@@ -166,13 +166,13 @@ function calcularTotal() {
 // Función para actualizar el carrito en el DOM
 function actualizarCarritoEnDOM() {
   const listaCarrito = document.getElementsByClassName("listaCarrito")[0];
-  listaCarrito.innerHTML = ""; 
+  listaCarrito.innerHTML = "";
 
   carrito.forEach((item) => {
     const li = document.createElement("li");
     const precioPresentacion = item.medicamento.presentaciones.find(
       (p) => p.nombre === item.presentacion
-    ).precio; 
+    ).precio;
     li.textContent = `${item.medicamento.nombre} (${item.presentacion}) - ${item.cantidad} unidades - Precio: $${precioPresentacion}`;
 
     // Botón para aumentar la cantidad
@@ -206,43 +206,41 @@ function actualizarCarritoEnDOM() {
   totalElement.textContent = `Total: $${total}`;
 }
 
-// Muestra el formulario al hacer clic en finalizar pedido
+// Muestra el formulario al hacer clic en finalizar
 botonFinalizar.addEventListener("click", () => {
-  formularioContainer.style.display = "block"; 
+  formularioContainer.style.display = "block";
 });
 
+window.addEventListener('load', () => {
+  formularioPedido.addEventListener('submit', (event) => {
+    event.preventDefault();
+    // Obtiene los datos del formulario y los llena automáticamente
+    const nombre = "Camila MacNamara";
+    const telefono = "123456789";
+    const direccion = "Calle CoderHouse 2024";
+    document.getElementById("nombre").value = nombre;
+    document.getElementById("telefono").value = telefono;
+    document.getElementById("direccion").value = direccion;
 
-document.addEventListener('DOMContentLoaded', () => {
-    formularioPedido.addEventListener('submit', (event) => {
-        event.preventDefault(); 
+    // Mostrar mensaje de confirmación
+    mensaje.textContent = `Gracias por comprar en Farma Vet, ${nombre}. Estaremos enviando tus productos a ${direccion} en los próximos días.`;
+    mensaje.style.display = 'block';
 
-// Obtener los datos del formulario y llenarlos automáticamente
-const nombre = "Camila MacNamara";
-const telefono = "123456789";
-const direccion = "Calle CoderHouse 2024";
+    // Limpiar el carrito de pedido
+    carrito = [];
+    localStorage.removeItem("carrito");
+    actualizarCarritoEnDOM();
 
-document.getElementById("nombre").value = nombre;
-document.getElementById("telefono").value = telefono;
-document.getElementById("direccion").value = direccion;
-
-// Mostrar mensaje de confirmación
-mensaje.textContent = `Gracias por comprar en Farma Vet, ${nombre}. Estaremos enviando tus productos a ${direccion} en los próximos días.`;
-mensaje.style.display = 'block'; 
-
- // Limpiar el carrito de pedido
- carrito = []; 
- localStorage.removeItem("carrito"); 
- actualizarCarritoEnDOM(); 
-
-// Limpiar el formulario y lo oculta
-formularioPedido.reset();
-formularioContainer.style.display = 'none'; 
+    // Limpia el formulario y lo oculta
+    formularioPedido.reset();
+    formularioContainer.style.display = 'none';
+  });
 });
-});
+
 
 // Generar los botones de productos dinámicamente
 function mostrarProductos() {
-  const productosContainer = document.getElementById("productos-container"); 
+  const productosContainer = document.getElementById("productos-container");
   productosContainer.innerHTML = "";
 
   medicamentos.forEach((medicamento) => {
@@ -252,36 +250,31 @@ function mostrarProductos() {
     // Crear la tarjeta de producto
     col.innerHTML = `
             <div class="card">
-                <img src="${medicamento.imagen}" class="card-img-top" alt="${
-      medicamento.nombre
-    }">
+                <img src="${medicamento.imagen}" class="card-img-top" alt="${medicamento.nombre
+      }">
                 <div class="card-body">
                     <h5 class="card-title">${medicamento.nombre}</h5>
-                    <p class="card-text">Propiedades: ${
-                      medicamento.propiedades
-                    }</p>
-                    <p>Precio: <span class="precio" id="precio-${
-                      medicamento.id
-                    }">$${medicamento.presentaciones[0].precio}</span></p>
+                    <p class="card-text">Propiedades: ${medicamento.propiedades
+      }</p>
+                    <p>Precio: <span class="precio" id="precio-${medicamento.id
+      }">$${medicamento.presentaciones[0].precio}</span></p>
                     
                     <!-- Select para presentaciones -->
-                    <select class="form-select mb-3" id="select-${
-                      medicamento.id
-                    }">
+                    <select class="form-select mb-3" id="select-${medicamento.id
+      }">
                         ${medicamento.presentaciones
-                          .map(
-                            (presentacion) => `
+        .map(
+          (presentacion) => `
                             <option value="${presentacion.nombre}" data-precio="${presentacion.precio}">
                                 ${presentacion.nombre}
                             </option>
                         `
-                          )
-                          .join("")}
+        )
+        .join("")}
                     </select>
                     
-                    <button class="btn btn-primary" id="boton-agregar-${
-                      medicamento.id
-                    }">Agregar al Carrito</button>
+                    <button class="btn btn-primary" id="boton-agregar-${medicamento.id
+      }">Agregar al Carrito</button>
                 </div>
             </div>
         `;
@@ -289,7 +282,7 @@ function mostrarProductos() {
     const selectPresentacion = col.querySelector(`#select-${medicamento.id}`);
     selectPresentacion.onchange = (event) => {
       const selectedOption = event.target.options[event.target.selectedIndex];
-      const nuevoPrecio = selectedOption.dataset.precio; 
+      const nuevoPrecio = selectedOption.dataset.precio;
       document.getElementById(
         `precio-${medicamento.id}`
       ).textContent = `$${nuevoPrecio}`;
