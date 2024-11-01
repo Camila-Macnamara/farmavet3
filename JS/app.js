@@ -31,15 +31,24 @@ function agregarAlCarrito(idMedicamento, presentacion) {
   actualizarCarritoEnDOM();
 }
 
+// Función para modificar la cantidad en el carrito
 function modificarCantidadEnCarrito(idMedicamento, presentacion, accion) {
   const itemCarrito = carrito.find(
     (item) =>
       item.medicamento.id === idMedicamento &&
       item.presentacion === presentacion
   );
+  
   if (itemCarrito) {
     if (accion === "incrementar") {
       itemCarrito.cantidad++;
+    } else if (accion === "disminuir") {
+      // Solo disminuimos si la cantidad es mayor a 1
+      if (itemCarrito.cantidad > 1) {
+        itemCarrito.cantidad--;
+      } else {
+        eliminarDelCarrito(idMedicamento, presentacion); // Eliminar el item si la cantidad es 1
+      }
     }
   }
   guardarCarritoEnLocalStorage();
@@ -74,6 +83,7 @@ function calcularTotal() {
   }, 0);
 }
 
+// Función para actualizar el carrito en el DOM
 function actualizarCarritoEnDOM() {
   const listaCarrito = document.getElementsByClassName("listaCarrito")[0];
   listaCarrito.innerHTML = "";
@@ -82,16 +92,25 @@ function actualizarCarritoEnDOM() {
     const precioPresentacion = item.medicamento.presentaciones.find(
       (p) => p.nombre === item.presentacion
     ).precio;
+    
     li.textContent = `${item.medicamento.nombre} (${item.presentacion}) - ${item.cantidad} unidades - Precio: $${precioPresentacion}`;
 
+    // Botón para aumentar la cantidad
     const botonAumentar = document.createElement("button");
     botonAumentar.textContent = "+";
     botonAumentar.onclick = () => modificarCantidadEnCarrito(item.medicamento.id, item.presentacion, "incrementar");
 
+    // Botón para disminuir la cantidad
+    const botonDisminuir = document.createElement("button");
+    botonDisminuir.textContent = "-";
+    botonDisminuir.onclick = () => modificarCantidadEnCarrito(item.medicamento.id, item.presentacion, "disminuir");
+
+    // Botón para eliminar el producto del carrito
     const botonEliminar = document.createElement("button");
     botonEliminar.innerHTML = '<i class="fas fa-trash-alt"></i>';
     botonEliminar.onclick = () => eliminarDelCarrito(item.medicamento.id, item.presentacion);
 
+    li.appendChild(botonDisminuir);
     li.appendChild(botonAumentar);
     li.appendChild(botonEliminar);
 
