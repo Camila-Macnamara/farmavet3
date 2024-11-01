@@ -1,95 +1,15 @@
-const medicamentos = [
-  {
-    "id": 1,
-    "nombre": "Naxpet",
-    "presentaciones": [
-      { "nombre": "100ml", "precio": 120 },
-      { "nombre": "200ml", "precio": 189 }
-    ],
-    "propiedades": "Antiinflamatorio y analgésico para animales",
-    "imagen": "./img/naxpet.jpg"
-  },
-  {
-    "id": 2,
-    "nombre": "Doxiciclina",
-    "presentaciones": [
-      { "nombre": "10 cápsulas", "precio": 100 },
-      { "nombre": "20 cápsulas", "precio": 180 }
-    ],
-    "propiedades": "Antibiótico de amplio espectro",
-    "imagen": "./img/doximicin.jpg"
-  },
-  {
-    "id": 3,
-    "nombre": "Prednisolona",
-    "presentaciones": [
-      { "nombre": "10 cápsulas", "precio": 45 },
-      { "nombre": "25 cápsulas", "precio": 80 }
-    ],
-    "propiedades": "Corticoide antiinflamatorio",
-    "imagen": "./img/dern.jpg"
-  },
-  {
-    "id": 4,
-    "nombre": "Fenilbutazona",
-    "presentaciones": [
-      { "nombre": "100ml", "precio": 70 },
-      { "nombre": "250ml", "precio": 150 }
-    ],
-    "propiedades": "Analgésico y antiinflamatorio",
-    "imagen": "./img/fenil.jpg"
-  },
-  {
-    "id": 5,
-    "nombre": "Clorhidrato de Trimebutina",
-    "presentaciones": [
-      { "nombre": "100ml", "precio": 60 },
-      { "nombre": "200ml", "precio": 110 }
-    ],
-    "propiedades": "Antiespasmódico y analgésico",
-    "imagen": "./img/respig.jpg"
-  },
-  {
-    "id": 6,
-    "nombre": "Ivermectina",
-    "presentaciones": [
-      { "nombre": "50ml", "precio": 55 },
-      { "nombre": "100ml", "precio": 95 }
-    ],
-    "propiedades": "Antiparasitario",
-    "imagen": "./img/invermic.jpg"
-  },
-  {
-    "id": 7,
-    "nombre": "Bendazol",
-    "presentaciones": [
-      { "nombre": "30ml", "precio": 70 },
-      { "nombre": "60ml", "precio": 120 }
-    ],
-    "propiedades": "Antiparasitario de amplio espectro",
-    "imagen": "./img/bzol.jpg"
-  },
-  {
-    "id": 8,
-    "nombre": "Metronidazol",
-    "presentaciones": [
-      { "nombre": "100ml", "precio": 30 },
-      { "nombre": "200ml", "precio": 50 }
-    ],
-    "propiedades": "Antibiótico y antiparasitario",
-    "imagen": "./img/gastroenteril.jpg"
-  },
-  {
-    "id": 9,
-    "nombre": "Loperamida",
-    "presentaciones": [
-      { "nombre": "100ml", "precio": 59 },
-      { "nombre": "200ml", "precio": 80 }
-    ],
-    "propiedades": "Antidiarreico",
-    "imagen": "./img/diarrepas.jpg"
-  }
-];
+let medicamentos = [];
+
+// Cargar medicamentos desde el archivo JSON
+fetch('./js/medicamentos.json')
+
+  .then(response => response.json())
+  .then(data => {
+    medicamentos = data;
+    mostrarProductos(); // Muestra los productos después de cargarlos
+    actualizarCarritoEnDOM();
+  })
+  .catch(error => console.error('Error al cargar los productos:', error));
 
 // Carrito de compras
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
