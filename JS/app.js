@@ -1,7 +1,7 @@
 let medicamentos = [];
 
 // Cargar medicamentos desde el archivo JSON
-fetch('./js/medicamentos.json')
+fetch('./js/productos.json')
 
   .then(response => response.json())
   .then(data => {
