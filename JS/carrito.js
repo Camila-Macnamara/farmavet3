@@ -38,7 +38,7 @@ function modificarCantidadEnCarrito(idMedicamento, presentacion, accion) {
       item.medicamento.id === idMedicamento &&
       item.presentacion === presentacion
   );
-  
+
   if (itemCarrito) {
     if (accion === "incrementar") {
       itemCarrito.cantidad++;
@@ -92,7 +92,7 @@ function actualizarCarritoEnDOM() {
     const precioPresentacion = item.medicamento.presentaciones.find(
       (p) => p.nombre === item.presentacion
     ).precio;
-    
+
     li.textContent = `${item.medicamento.nombre} (${item.presentacion}) - ${item.cantidad} unidades - Precio: $${precioPresentacion}`;
 
     // Botón para aumentar la cantidad
@@ -191,31 +191,33 @@ botonFinalizarModal.addEventListener("click", () => {
 
 formularioPedido.addEventListener('submit', (event) => {
   event.preventDefault();
-
+  
   // Obtener los datos ingresados en el formulario
   const nombre = document.getElementById("nombre").value;
   const telefono = document.getElementById("telefono").value;
   const direccion = document.getElementById("direccion").value;
+  const metodoPago = document.getElementById("metodoPago").value;
+  const envio = document.getElementById("envio").value;
 
-  // Mostrar mensaje de confirmación
-  mensaje.textContent = `Gracias por comprar en Farma Vet, ${nombre}. Estaremos enviando tus productos a ${direccion} en los próximos días.`;
-  mensaje.style.display = 'block';
+  // Crear un objeto de resumen de la compra
+  const usuario = {
+    nombre,
+    telefono,
+    direccion,
+    metodoPago,
+    envio,
+    productos: carrito // Guardamos el carrito completo
+  };
+
+  // Guardar el resumen en localStorage
+  localStorage.setItem("usuario", JSON.stringify(usuario));
+  localStorage.setItem("carrito", JSON.stringify(carrito));
 
   // Limpiar el carrito de pedido
   carrito = [];
-  localStorage.removeItem("carrito");
-  actualizarCarritoEnDOM();
 
-  // Mantener el modal abierto durante 5 segundos
-  const modal = bootstrap.Modal.getInstance(document.getElementById("carritoModal"));
-  modal.show();
-
-  // Ocultar el formulario y el mensaje después de 5 segundos
-  setTimeout(() => {
-    formularioContainer.style.display = 'none';
-    mensaje.style.display = 'none';
-    modal.hide();
-  }, 5000);
+  // Redirigir a la página del resumen
+  window.location.href = '../resumendecompra.html'; 
 });
 
 

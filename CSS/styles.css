@@ -6,13 +6,16 @@ header {
 
 
 body {
+    position: relative;
     font-family: Roboto, Arial, sans-serif;
     background-color: #f9f9f9;
     margin: 0;
     padding: 20px;
-    background: url('../img/fondo.jpg') no-repeat center center fixed;
+    background: url('../assets/img/fondo.jpg') no-repeat center center fixed;
     background-size: cover;
-    position: relative;
+    display: flex; /* Usa flexbox para el layout */
+    flex-direction: column; /* Coloca los hijos (contenido y footer) en columna */
+    min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la ventana */
 }
 
 body::before {
@@ -143,6 +146,7 @@ button:hover {
     padding: 20px;
     text-align: center;
     font-size: 1rem;
+    margin-top: auto;
 }
 
 
@@ -155,13 +159,18 @@ button:hover {
     .card {
         margin-bottom: 20px;
     }
+
+    .custom-footer {
+        padding: 15px; /* Reduce el padding si es necesario */
+    }
 }
 
 /* Estilos para la barra de navegación */
 
 
 .custom-navbar {
-    background-color: #fdedec !important;
+    background-color: rgb(243, 148, 188, 0.5) !important;
+    border-radius: 8px;
 }
 
 .navbar-brand {
@@ -218,13 +227,6 @@ button:hover {
     border: 1px solid #ccc;
 }
 
-.mensaje {
-    display: none;
-    margin-top: 20px;
-    font-size: 1.2rem;
-    color: #8928a7;
-}
-
 /* Modal del carrito */
 .modal-dialog {
     max-width: 400px;
@@ -245,4 +247,20 @@ button:hover {
 .mensaje-error {
     display: none;
     color: red;
+}
+
+.resumen-container {
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: rgba(243, 148, 188, 0.5); 
+    max-width: 600px; 
+    width: 90%; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.contenedor-principal {
+    flex: 1; /* Esto permite que el contenedor ocupe el espacio restante */
+    display: flex;
+    flex-direction: column; /* Alineación vertical */
 }

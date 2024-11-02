@@ -14,13 +14,13 @@
 
     <title>Farma Vet</title>
 
-    <script defer src="./JS/app.js"></script>
+    <script defer src="./JS/carrito.js"></script>
 </head>
 
 <body>
 
     <div class="text-center my-3">
-        <img src="./img/farma ped.png" alt="Logo de la tienda" class="img-fluid" style="max-width: 150px;">
+        <img src="../assets/img//farma ped.png" alt="Logo de la tienda" class="img-fluid" style="max-width: 150px;">
     </div>
 
     <!-- Barra de navegación -->
@@ -50,7 +50,7 @@
     <!-- Banner simulado -->
     <section class="banner">
         <div class="container-fluid p-0">
-            <img src="./img/banner.png" alt="Banner de la tienda" class="img-fluid w-100">
+            <img src="./assets/img/banner.png" alt="Banner de la tienda" class="img-fluid w-100">
         </div>
     </section>
 
@@ -80,30 +80,44 @@
                     <button id="vaciar-carrito" class="btn-vaciar fredoka">Vaciar Carrito</button>
                     <button id="finalizar-pedido-modal" class="btn-finalizar fredoka">Finalizar Pedido</button>
 
-                    <!-- Mensaje de error en caso de que el carrito esté vacío -->
-                    <div id="mensaje-error" class="mensaje-error" style="display: none; color: red;"></div>
+                     <!-- Mensaje de error general -->
+                     <div id="mensaje-error" class="mensaje-error" style="display: none; color: red;"></div>
+
 
                     <!-- Formulario dentro del modal -->
                     <div id="formulario-container" class="formulario-container fredoka"
                         style="display: none; margin-top: 20px;">
                         <h3>Detalles de Envío</h3>
                         <form id="formulario-pedido">
-                            <label for="nombre">Nombre:</label>
+                            <label for="nombre">Nombre y Apellido:</label>
                             <input type="text" id="nombre" required>
+                          
                             <label for="telefono">Teléfono:</label>
                             <input type="tel" id="telefono" required>
+                          
                             <label for="direccion">Dirección:</label>
                             <input type="text" id="direccion" required>
-                            <button type="submit">Enviar</button>
+                          
+                            <label for="metodoPago">Método de Pago:</label>
+                            <select id="metodoPago" required>
+                              <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+                              <option value="Paypal">PayPal</option>
+                              <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+                            </select>
+                          
+                            <label for="envio">Método de Envío:</label>
+                            <select id="envio" required>
+                              <option value="Estándar">Estándar</option>
+                              <option value="Express">Express</option>
+                            </select>
+                          
+                            <button type="submit">Finalizar Compra</button>
                         </form>
-                        <!-- Mensaje de agradecimiento -->
-                        <div id="mensaje" class="mensaje" style="display: none; margin-top: 20px;"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <footer class="custom-footer text-center text-lg-start mt-5 fredoka">
         <div class="text-center p-3">
