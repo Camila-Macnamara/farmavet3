@@ -43,7 +43,7 @@ function modificarCantidadEnCarrito(idMedicamento, presentacion, accion) {
     if (accion === "incrementar") {
       itemCarrito.cantidad++;
     } else if (accion === "disminuir") {
-      // Solo disminuimos si la cantidad es mayor a 1
+
       if (itemCarrito.cantidad > 1) {
         itemCarrito.cantidad--;
       } else {
@@ -191,7 +191,7 @@ botonFinalizarModal.addEventListener("click", () => {
 
 formularioPedido.addEventListener('submit', (event) => {
   event.preventDefault();
-
+  
   // Obtener los datos ingresados en el formulario
   const nombre = document.getElementById("nombre").value;
   const telefono = document.getElementById("telefono").value;
@@ -206,7 +206,7 @@ formularioPedido.addEventListener('submit', (event) => {
     direccion,
     metodoPago,
     envio,
-    productos: carrito
+    productos: carrito 
   };
 
   // Guardar el resumen en localStorage
@@ -217,7 +217,7 @@ formularioPedido.addEventListener('submit', (event) => {
   carrito = [];
 
   // Redirigir a la página del resumen
-  window.location.href = '../resumendecompra.html';
+  window.location.href = '../resumendecompra.html'; 
 });
 
 

@@ -7,7 +7,7 @@
         { "nombre": "200ml", "precio": 189 }
       ],
       "propiedades": "Antiinflamatorio y analgésico para animales",
-      "imagen": "./assets/img/naxpet.jpg"
+      "imagen": "../assets/img/naxpet.jpg"
     },
     {
       "id": 2,
@@ -17,7 +17,7 @@
         { "nombre": "20 cápsulas", "precio": 180 }
       ],
       "propiedades": "Antibiótico de amplio espectro",
-      "imagen": "./assets/img/doximicin.jpg"
+      "imagen": "../assets/img/doximicin.jpg"
     },
     {
       "id": 3,
@@ -27,7 +27,7 @@
         { "nombre": "25 cápsulas", "precio": 80 }
       ],
       "propiedades": "Corticoide antiinflamatorio",
-      "imagen": "./assets/img/dern.jpg"
+      "imagen": "../assets/img/dern.jpg"
     },
     {
       "id": 4,
@@ -37,7 +37,7 @@
         { "nombre": "250ml", "precio": 150 }
       ],
       "propiedades": "Analgésico y antiinflamatorio",
-      "imagen": "./assets/img/fenil.jpg"
+      "imagen": "../assets/img/fenil.jpg"
     },
     {
       "id": 5,
@@ -47,7 +47,7 @@
         { "nombre": "200ml", "precio": 110 }
       ],
       "propiedades": "Antiespasmódico y analgésico",
-      "imagen": "./assets/img/respig.jpg"
+      "imagen": "../assets/img/respig.jpg"
     },
     {
       "id": 6,
@@ -57,7 +57,7 @@
         { "nombre": "100ml", "precio": 95 }
       ],
       "propiedades": "Antiparasitario",
-      "imagen": "./assets/img/invermic.jpg"
+      "imagen": "../assets/img/invermic.jpg"
     },
     {
       "id": 7,
@@ -67,7 +67,7 @@
         { "nombre": "60ml", "precio": 120 }
       ],
       "propiedades": "Antiparasitario de amplio espectro",
-      "imagen": "./assets/img/bzol.jpg"
+      "imagen": "../assets/img/bzol.jpg"
     },
     {
       "id": 8,
@@ -77,7 +77,7 @@
         { "nombre": "200ml", "precio": 50 }
       ],
       "propiedades": "Antibiótico y antiparasitario",
-      "imagen": "./assets/img/gastroenteril.jpg"
+      "imagen": "../assets/img/gastroenteril.jpg"
     },
     {
       "id": 9,
@@ -87,7 +87,7 @@
         { "nombre": "200ml", "precio": 80 }
       ],
       "propiedades": "Antidiarreico",
-      "imagen": "./assets/img/diarrepas.jpg"
+      "imagen": "../assets/img/diarrepas.jpg"
     }
   ]
   
