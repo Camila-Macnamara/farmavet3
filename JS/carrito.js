@@ -217,7 +217,7 @@ formularioPedido.addEventListener('submit', (event) => {
   carrito = [];
 
   // Redirigir a la página del resumen
-  window.location.href = './Pages/resumendecompra.html'; 
+  window.location.href = '../Pages/resumendecompra.html'; 
 });
 
 
