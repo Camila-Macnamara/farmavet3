@@ -17,12 +17,14 @@ Este proyecto simula un e-commerce de productos farmacéuticos para uso veterina
 3. **Ver y Finalizar la Compra**
    - Una vez que hayas agregado productos, dirígete a tu carrito.
    - Haz clic en el botón "Finalizar Pedido".
-   - Esto abrirá un formulario donde debes ingresar tu nombre, teléfono y dirección.
+   - Esto abrirá un formulario que debes completar.
 
 4. **Enviar el Formulario**
-   - Completa el formulario y haz clic en "Enviar".
-   - Al enviar el formulario, recibirás un mensaje de agradecimiento que confirmará tu compra.
-   - Se te informará que tu producto será enviado en poco tiempo.
+   - Completa el formulario con los datos solicitados
+   - Escoge el método de pago y el método de envío, luego haz clic en "Comprar".
+   - Al enviar el formulario, se te redireccionrá a una página que mostrará un resumen de compra.
+   - Dicho resumen de compra motrará los datos ingresados en el formulario, los productos comprados y el total pagado.
+   - Con esto se concluye la compra, por lo que puedes volver a la página principal haciendo click en "volver a la tienda"
 
 ## Notas
 - Asegúrate de tener una conexión a Internet activa para cargar los productos correctamente desde el archivo JSON.
