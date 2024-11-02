@@ -88,7 +88,7 @@
                     <!-- Formulario dentro del modal -->
                     <div id="formulario-container" class="formulario-container fredoka"
                         style="display: none; margin-top: 20px;">
-                        <h3>Detalles de Envío</h3>
+                        <h3>Datos de cliente</h3>
                         <form id="formulario-pedido">
                             <label for="nombre">Nombre y Apellido:</label>
                             <input type="text" id="nombre" required>
@@ -98,6 +98,7 @@
 
                             <label for="direccion">Dirección:</label>
                             <input type="text" id="direccion" required>
+                            <h3>Envío y forma pago</h3>
 
                             <label for="metodoPago">Método de Pago:</label>
                             <select id="metodoPago" required>
@@ -112,7 +113,9 @@
                                 <option value="Express">Express</option>
                             </select>
 
-                            <button type="submit">Finalizar Compra</button>
+                            <div class="text-center mt-4">
+                                <button class="btn btn-primary" type="submit">Comprar</button>
+                            </div>
                         </form>
                     </div>
                 </div>

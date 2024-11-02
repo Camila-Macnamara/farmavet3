@@ -73,7 +73,7 @@ h1 .text-center {
 
 /* Estilos para el carrito */
 .carrito {
-    display: block;
+    display: flex;
     max-width: 500px;
     width: 100%;
     margin: 40px auto;
@@ -138,7 +138,6 @@ button {
 button:hover {
     background-color: #2a4577;
 }
-
 
 .custom-footer {
     background-color: #563d7c;
