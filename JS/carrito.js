@@ -6,7 +6,7 @@ fetch('./JS/productos.json')
   .then(response => response.json())
   .then(data => {
     medicamentos = data;
-    mostrarProductos(); // Muestra los productos después de cargarlos
+    mostrarProductos();
     actualizarCarritoEnDOM();
   })
   .catch(error => console.error('Error al cargar los productos:', error));
@@ -47,7 +47,7 @@ function modificarCantidadEnCarrito(idMedicamento, presentacion, accion) {
       if (itemCarrito.cantidad > 1) {
         itemCarrito.cantidad--;
       } else {
-        eliminarDelCarrito(idMedicamento, presentacion); // Eliminar el item si la cantidad es 1
+        eliminarDelCarrito(idMedicamento, presentacion);
       }
     }
   }
@@ -191,7 +191,7 @@ botonFinalizarModal.addEventListener("click", () => {
 
 formularioPedido.addEventListener('submit', (event) => {
   event.preventDefault();
-  
+
   // Obtener los datos ingresados en el formulario
   const nombre = document.getElementById("nombre").value;
   const telefono = document.getElementById("telefono").value;
@@ -206,7 +206,7 @@ formularioPedido.addEventListener('submit', (event) => {
     direccion,
     metodoPago,
     envio,
-    productos: carrito // Guardamos el carrito completo
+    productos: carrito
   };
 
   // Guardar el resumen en localStorage
@@ -217,7 +217,7 @@ formularioPedido.addEventListener('submit', (event) => {
   carrito = [];
 
   // Redirigir a la página del resumen
-  window.location.href = '../resumendecompra.html'; 
+  window.location.href = '../resumendecompra.html';
 });
 
 

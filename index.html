@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="./CSS/styles.css">
 
+    <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <title>Farma Vet</title>
 
     <script defer src="./JS/carrito.js"></script>
@@ -80,8 +81,8 @@
                     <button id="vaciar-carrito" class="btn-vaciar fredoka">Vaciar Carrito</button>
                     <button id="finalizar-pedido-modal" class="btn-finalizar fredoka">Finalizar Pedido</button>
 
-                     <!-- Mensaje de error general -->
-                     <div id="mensaje-error" class="mensaje-error" style="display: none; color: red;"></div>
+                    <!-- Mensaje de error general -->
+                    <div id="mensaje-error" class="mensaje-error" style="display: none; color: red;"></div>
 
 
                     <!-- Formulario dentro del modal -->
@@ -91,26 +92,26 @@
                         <form id="formulario-pedido">
                             <label for="nombre">Nombre y Apellido:</label>
                             <input type="text" id="nombre" required>
-                          
+
                             <label for="telefono">Teléfono:</label>
                             <input type="tel" id="telefono" required>
-                          
+
                             <label for="direccion">Dirección:</label>
                             <input type="text" id="direccion" required>
-                          
+
                             <label for="metodoPago">Método de Pago:</label>
                             <select id="metodoPago" required>
-                              <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
-                              <option value="Paypal">PayPal</option>
-                              <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+                                <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+                                <option value="Paypal">PayPal</option>
+                                <option value="Transferencia Bancaria">Transferencia Bancaria</option>
                             </select>
-                          
+
                             <label for="envio">Método de Envío:</label>
                             <select id="envio" required>
-                              <option value="Estándar">Estándar</option>
-                              <option value="Express">Express</option>
+                                <option value="Estándar">Estándar</option>
+                                <option value="Express">Express</option>
                             </select>
-                          
+
                             <button type="submit">Finalizar Compra</button>
                         </form>
                     </div>
