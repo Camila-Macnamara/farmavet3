@@ -1,15 +1,15 @@
 let medicamentos = [];
 
 // Cargar medicamentos desde el archivo JSON
-fetch('./JS/productos.json')
-
-  .then(response => response.json())
-  .then(data => {
+fetch("./JS/productos.json")
+  .then((response) => response.json())
+  .then((data) => {
     medicamentos = data;
     mostrarProductos();
     actualizarCarritoEnDOM();
+    actualizarContadorCarrito();
   })
-  .catch(error => console.error('Error al cargar los productos:', error));
+  .catch((error) => console.error("Error al cargar los productos:", error));
 
 // Carrito de compras
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -29,6 +29,11 @@ function agregarAlCarrito(idMedicamento, presentacion) {
   }
   guardarCarritoEnLocalStorage();
   actualizarCarritoEnDOM();
+  actualizarContadorCarrito();
+
+  // Ocultar mensaje de error al agregar productos
+  const mensajeError = document.getElementById("mensaje-error");
+  mensajeError.style.display = "none";
 }
 
 // Función para modificar la cantidad en el carrito
@@ -43,7 +48,6 @@ function modificarCantidadEnCarrito(idMedicamento, presentacion, accion) {
     if (accion === "incrementar") {
       itemCarrito.cantidad++;
     } else if (accion === "disminuir") {
-
       if (itemCarrito.cantidad > 1) {
         itemCarrito.cantidad--;
       } else {
@@ -53,21 +57,27 @@ function modificarCantidadEnCarrito(idMedicamento, presentacion, accion) {
   }
   guardarCarritoEnLocalStorage();
   actualizarCarritoEnDOM();
+  actualizarContadorCarrito();
 }
 
 function eliminarDelCarrito(idMedicamento, presentacion) {
   carrito = carrito.filter(
     (item) =>
-      !(item.medicamento.id === idMedicamento && item.presentacion === presentacion)
+      !(
+        item.medicamento.id === idMedicamento &&
+        item.presentacion === presentacion
+      )
   );
   guardarCarritoEnLocalStorage();
   actualizarCarritoEnDOM();
+  actualizarContadorCarrito();
 }
 
 function vaciarCarrito() {
   carrito = [];
   guardarCarritoEnLocalStorage();
   actualizarCarritoEnDOM();
+  actualizarContadorCarrito();
 }
 
 function guardarCarritoEnLocalStorage() {
@@ -98,17 +108,28 @@ function actualizarCarritoEnDOM() {
     // Botón para aumentar la cantidad
     const botonAumentar = document.createElement("button");
     botonAumentar.textContent = "+";
-    botonAumentar.onclick = () => modificarCantidadEnCarrito(item.medicamento.id, item.presentacion, "incrementar");
+    botonAumentar.onclick = () =>
+      modificarCantidadEnCarrito(
+        item.medicamento.id,
+        item.presentacion,
+        "incrementar"
+      );
 
     // Botón para disminuir la cantidad
     const botonDisminuir = document.createElement("button");
     botonDisminuir.textContent = "-";
-    botonDisminuir.onclick = () => modificarCantidadEnCarrito(item.medicamento.id, item.presentacion, "disminuir");
+    botonDisminuir.onclick = () =>
+      modificarCantidadEnCarrito(
+        item.medicamento.id,
+        item.presentacion,
+        "disminuir"
+      );
 
     // Botón para eliminar el producto del carrito
     const botonEliminar = document.createElement("button");
     botonEliminar.innerHTML = '<i class="fas fa-trash-alt"></i>';
-    botonEliminar.onclick = () => eliminarDelCarrito(item.medicamento.id, item.presentacion);
+    botonEliminar.onclick = () =>
+      eliminarDelCarrito(item.medicamento.id, item.presentacion);
 
     li.appendChild(botonDisminuir);
     li.appendChild(botonAumentar);
@@ -122,6 +143,12 @@ function actualizarCarritoEnDOM() {
   totalElement.textContent = `Total: $${total}`;
 }
 
+// Función para actualizar el contador del carrito
+function actualizarContadorCarrito() {
+  const contadorCarrito = document.getElementById("contador-carrito");
+  contadorCarrito.textContent = carrito.reduce((total, item) => total + item.cantidad, 0);
+}
+
 // Mostrar productos y agregar eventos
 function mostrarProductos() {
   const productosContainer = document.getElementById("productos-container");
@@ -131,11 +158,13 @@ function mostrarProductos() {
     col.className = "col-md-4 mb-4";
 
     // Opciones del select usando map
-    const opciones = medicamento.presentaciones.map(presentacion =>
-      `<option value="${presentacion.nombre}" data-precio="${presentacion.precio}">${presentacion.nombre}</option>`
-    ).join("");
+    const opciones = medicamento.presentaciones
+      .map(
+        (presentacion) =>
+          `<option value="${presentacion.nombre}" data-precio="${presentacion.precio}">${presentacion.nombre}</option>`
+      )
+      .join("");
 
-    // HTML sin incluir js
     col.innerHTML = `
             <div class="card">
                 <img src="${medicamento.imagen}" class="card-img-top" alt="${medicamento.nombre}">
@@ -156,7 +185,9 @@ function mostrarProductos() {
     selectPresentacion.onchange = (event) => {
       const selectedOption = event.target.options[event.target.selectedIndex];
       const nuevoPrecio = selectedOption.dataset.precio;
-      document.getElementById(`precio-${medicamento.id}`).textContent = `$${nuevoPrecio}`;
+      document.getElementById(
+        `precio-${medicamento.id}`
+      ).textContent = `$${nuevoPrecio}`;
     };
 
     const botonAgregar = col.querySelector(`#boton-agregar-${medicamento.id}`);
@@ -183,15 +214,26 @@ botonFinalizarModal.addEventListener("click", () => {
   if (carrito.length > 0) {
     formularioContainer.style.display = "block";
   } else {
-    mensajeError.textContent = "El carrito está vacío. Añade productos antes de finalizar el pedido.";
+    mensajeError.textContent =
+      "El carrito está vacío. Añade productos antes de finalizar el pedido.";
     mensajeError.style.display = "block";
   }
 });
 
+// Validaciones para el formulario
+const telefonoInput = document.getElementById("telefono");
+telefonoInput.addEventListener("input", function () {
+  this.value = this.value.replace(/[^0-9]/g, "");
+});
 
-formularioPedido.addEventListener('submit', (event) => {
+const nombreInput = document.getElementById("nombre");
+nombreInput.addEventListener("input", function () {
+  this.value = this.value.replace(/[^a-zA-Z\s]/g, "");
+});
+
+formularioPedido.addEventListener("submit", (event) => {
   event.preventDefault();
-  
+
   // Obtener los datos ingresados en el formulario
   const nombre = document.getElementById("nombre").value;
   const telefono = document.getElementById("telefono").value;
@@ -206,7 +248,7 @@ formularioPedido.addEventListener('submit', (event) => {
     direccion,
     metodoPago,
     envio,
-    productos: carrito 
+    productos: carrito,
   };
 
   // Guardar el resumen en localStorage
@@ -216,14 +258,19 @@ formularioPedido.addEventListener('submit', (event) => {
   // Limpiar el carrito de pedido
   carrito = [];
 
-  // Redirigir a la página del resumen
-  window.location.href = '../Pages/resumendecompra.html'; 
-});
+  // Actualizar el contador después de limpiar el carrito
+  actualizarContadorCarrito();
 
+  // Redirigir a la página del resumen
+  window.location.href = "../Pages/resumendecompra.html";
+});
 
 // Evento para vaciar el carrito
 const botonVaciar = document.getElementById("vaciar-carrito");
-botonVaciar.addEventListener("click", vaciarCarrito);
+botonVaciar.addEventListener("click", () => {
+  vaciarCarrito();
+  actualizarContadorCarrito();
+});
 
 // Inicializar la aplicación
 mostrarProductos();
