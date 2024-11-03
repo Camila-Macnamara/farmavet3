@@ -7,7 +7,7 @@
         { "nombre": "200ml", "precio": 189 }
       ],
       "propiedades": "Antiinflamatorio y analgésico para animales",
-      "imagen": "assets/img/naxpet.jpg"
+      "imagen": "./assets/img/naxpet.jpg"
     },
     {
       "id": 2,
