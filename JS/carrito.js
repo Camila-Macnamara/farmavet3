@@ -262,7 +262,7 @@ formularioPedido.addEventListener("submit", (event) => {
   actualizarContadorCarrito();
 
   // Redirigir a la página del resumen
-  window.location.href = "./Pages/resumendecompra.html";
+  window.location.href = "../pages/resumendecompra.html";
 });
 
 // Evento para vaciar el carrito
