@@ -140,7 +140,7 @@ button:hover {
 }
 
 .custom-footer {
-    background-color: #563d7c;
+    background-color: rgb(86, 61, 124);
     color: #ffffff;
     padding: 20px;
     text-align: center;
@@ -260,4 +260,23 @@ button:hover {
     flex: 1; 
     display: flex;
     flex-direction: column;
+}
+
+ /* Propiedades del mensaje de éxito al agregar un producto */
+.mensaje-exito {
+    font-family: "Fredoka", sans-serif;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgb(86, 61, 124);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease; 
+}
+.mensaje-exito.mostrar {
+    display: block;
+    opacity: 1;
 }

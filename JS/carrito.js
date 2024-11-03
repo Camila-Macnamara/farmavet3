@@ -14,6 +14,17 @@ fetch("./JS/productos.json")
 // Carrito de compras
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
+// Función para mostrar mensaje de éxito
+function mostrarMensajeExito() {
+  const mensaje = document.getElementById("mensaje-exito");
+  mensaje.classList.add("mostrar");
+
+  // Oculta el mensaje después de 3 segundos
+  setTimeout(() => {
+    mensaje.classList.remove("mostrar");
+  }, 2000);
+}
+
 // Funciones de lógica del carrito
 function agregarAlCarrito(idMedicamento, presentacion) {
   const medicamento = medicamentos.find((m) => m.id === idMedicamento);
@@ -34,6 +45,9 @@ function agregarAlCarrito(idMedicamento, presentacion) {
   // Ocultar mensaje de error al agregar productos
   const mensajeError = document.getElementById("mensaje-error");
   mensajeError.style.display = "none";
+
+  // Mostrar el mensaje de éxito
+  mostrarMensajeExito();
 }
 
 // Función para modificar la cantidad en el carrito
@@ -146,7 +160,10 @@ function actualizarCarritoEnDOM() {
 // Función para actualizar el contador del carrito
 function actualizarContadorCarrito() {
   const contadorCarrito = document.getElementById("contador-carrito");
-  contadorCarrito.textContent = carrito.reduce((total, item) => total + item.cantidad, 0);
+  contadorCarrito.textContent = carrito.reduce(
+    (total, item) => total + item.cantidad,
+    0
+  );
 }
 
 // Mostrar productos y agregar eventos

@@ -72,7 +72,7 @@ function mostrarResumen() {
         return `
             <li>
                 <img src="${item.medicamento.imagen}" alt="${item.medicamento.nombre}" style="width: 50px; height: 50px; margin: 5px;">
-                ${item.medicamento.nombre} (${item.presentacion}) - ${item.cantidad} unidades - Precio Total: $${precioTotal}
+                ${item.medicamento.nombre} (${item.presentacion}) - ${item.cantidad} unidades - Precio: $${precioTotal}
             </li>
         `;
       })

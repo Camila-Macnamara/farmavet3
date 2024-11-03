@@ -3,8 +3,8 @@
       "id": 1,
       "nombre": "Naxpet",
       "presentaciones": [
-        { "nombre": "100ml", "precio": 120 },
-        { "nombre": "200ml", "precio": 189 }
+        { "nombre": "100ml", "precio": 1200 },
+        { "nombre": "200ml", "precio": 1550 }
       ],
       "propiedades": "Antiinflamatorio y analgésico para animales",
       "imagen": "./assets/img/naxpet.jpg"
@@ -13,8 +13,8 @@
       "id": 2,
       "nombre": "Doxiciclina",
       "presentaciones": [
-        { "nombre": "10 cápsulas", "precio": 100 },
-        { "nombre": "20 cápsulas", "precio": 180 }
+        { "nombre": "10 cápsulas", "precio": 1000 },
+        { "nombre": "20 cápsulas", "precio": 1800 }
       ],
       "propiedades": "Antibiótico de amplio espectro",
       "imagen": "./assets/img/doximicin.jpg"
@@ -23,8 +23,8 @@
       "id": 3,
       "nombre": "Prednisolona",
       "presentaciones": [
-        { "nombre": "10 cápsulas", "precio": 45 },
-        { "nombre": "25 cápsulas", "precio": 80 }
+        { "nombre": "10 cápsulas", "precio": 4500 },
+        { "nombre": "25 cápsulas", "precio": 8000 }
       ],
       "propiedades": "Corticoide antiinflamatorio",
       "imagen": "./assets/img/dern.jpg"
@@ -33,8 +33,8 @@
       "id": 4,
       "nombre": "Fenilbutazona",
       "presentaciones": [
-        { "nombre": "100ml", "precio": 70 },
-        { "nombre": "250ml", "precio": 150 }
+        { "nombre": "100ml", "precio": 7000},
+        { "nombre": "250ml", "precio": 15000 }
       ],
       "propiedades": "Analgésico y antiinflamatorio",
       "imagen": "./assets/img/fenil.jpg"
@@ -43,8 +43,8 @@
       "id": 5,
       "nombre": "Clorhidrato de Trimebutina",
       "presentaciones": [
-        { "nombre": "100ml", "precio": 60 },
-        { "nombre": "200ml", "precio": 110 }
+        { "nombre": "100ml", "precio": 6000 },
+        { "nombre": "200ml", "precio": 11000 }
       ],
       "propiedades": "Antiespasmódico y analgésico",
       "imagen": "./assets/img/respig.jpg"
@@ -53,8 +53,8 @@
       "id": 6,
       "nombre": "Ivermectina",
       "presentaciones": [
-        { "nombre": "50ml", "precio": 55 },
-        { "nombre": "100ml", "precio": 95 }
+        { "nombre": "50ml", "precio": 5500 },
+        { "nombre": "100ml", "precio": 9500 }
       ],
       "propiedades": "Antiparasitario",
       "imagen": "./assets/img/invermic.jpg"
@@ -63,8 +63,8 @@
       "id": 7,
       "nombre": "Bendazol",
       "presentaciones": [
-        { "nombre": "30ml", "precio": 70 },
-        { "nombre": "60ml", "precio": 120 }
+        { "nombre": "30ml", "precio": 7000 },
+        { "nombre": "60ml", "precio": 12000 }
       ],
       "propiedades": "Antiparasitario de amplio espectro",
       "imagen": "./assets/img/bzol.jpg"
@@ -73,8 +73,8 @@
       "id": 8,
       "nombre": "Metronidazol",
       "presentaciones": [
-        { "nombre": "100ml", "precio": 30 },
-        { "nombre": "200ml", "precio": 50 }
+        { "nombre": "100ml", "precio": 3000 },
+        { "nombre": "200ml", "precio": 5000 }
       ],
       "propiedades": "Antibiótico y antiparasitario",
       "imagen": "./assets/img/gastroenteril.jpg"
@@ -83,8 +83,8 @@
       "id": 9,
       "nombre": "Loperamida",
       "presentaciones": [
-        { "nombre": "100ml", "precio": 59 },
-        { "nombre": "200ml", "precio": 80 }
+        { "nombre": "100ml", "precio": 5900 },
+        { "nombre": "200ml", "precio": 8000 }
       ],
       "propiedades": "Antidiarreico",
       "imagen": "./assets/img/diarrepas.jpg"
