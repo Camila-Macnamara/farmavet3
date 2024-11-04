@@ -13,6 +13,8 @@ Este proyecto simula un e-commerce de productos farmacéuticos para uso veterina
    - Selecciona la presentación del producto que deseas.
    - Haz clic en el botón "Agregar al Carrito".
    - Repite este proceso para agregar más productos si lo deseas.
+   - Por cada vez que agregues un producto, se deberá ver en el ícono de carrito de la barra de navegación.
+   - También aparecerá un mensaje que indicará al usuario que su producto fue agregdo al carro exitosamente.
 
 3. **Ver y Finalizar la Compra**
    - Una vez que hayas agregado productos, dirígete a tu carrito.
